@@ -11,7 +11,7 @@ BEGIN
 	WHERE rental_id IN (
 		SELECT rental_id
 		FROM rental
-		WHERE rental_duration > INTERVAL '7 days'
+		WHERE return_date > INTERVAL '7 days'
 	);
 END;
 $$;
@@ -44,7 +44,7 @@ BEGIN
 		FROM (
 			SELECT customer_id
 			GROUP BY customer_id
-		) AS customer_totals
+		) AS customer_total
 		WHERE total_amount > 200
 );
 END;
